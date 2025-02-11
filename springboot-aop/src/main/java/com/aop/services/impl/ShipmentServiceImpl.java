@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ShipmentServiceImpl implements ShipmentService {
 
+    //JoinPoint:- These are the specific points in your program where you might want
+    //            to inject additional logic or behaviour.
     @Override
     public String orderPackage(Long orderId) {
         // Secondary business logic...
-        log.info("Before orderPackage method");
+        // log.info("Before orderPackage method");
         // Business logic
         try {
             log.info("Ordering your package...");
@@ -22,10 +24,11 @@ public class ShipmentServiceImpl implements ShipmentService {
         return "Your order has been processed successfully!!! orderId: " + orderId;
     }
 
+    // JoinPoint
     @Override
     public String trackPackage(Long orderId) {
         // Secondary business logic...
-        log.info("Before trackPackage method");
+        // log.info("Before trackPackage method");
         // Business logic
         try {
             log.info("Tracking your package...");
