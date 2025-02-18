@@ -1,6 +1,8 @@
 package com.aop.services.impl;
 
+import com.aop.annotations.CustomAnnotation;
 import com.aop.services.ShipmentService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +10,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ShipmentServiceImpl implements ShipmentService {
 
+    public ShipmentServiceImpl() {
+        log.info("Inside ShipmentServiceImpl constructor");
+    }
+
     //JoinPoint:- These are the specific points in your program where you might want
     //            to inject additional logic or behaviour.
     @Override
+    @Transactional
     public String orderPackage(Long orderId) {
         // Secondary business logic...
         // log.info("Before orderPackage method");
@@ -26,6 +33,7 @@ public class ShipmentServiceImpl implements ShipmentService {
 
     // JoinPoint
     @Override
+    @CustomAnnotation
     public String trackPackage(Long orderId) {
         // Secondary business logic...
         // log.info("Before trackPackage method");
