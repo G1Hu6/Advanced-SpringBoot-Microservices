@@ -28,8 +28,19 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspect {
 
-    @Before("execution(* com.aop.services.impl.ShipmentServiceImpl.*(..))")
+    // 1.execution kind pointcut
+//    @Before("execution(* com.aop.services.impl.*.*(..))")
+//    public void beforeAllServicesClassMethods(JoinPoint joinPoint){
+//        log.info("Before all service method call : {}", joinPoint.getSignature());
+//    }
+
+//    @Before("execution(* com.aop.services.impl.ShipmentServiceImpl.orderPackage(..))")
+//    public void beforeShipmentServiceMethods(JoinPoint joinPoint){
+//        log.info("Before specific orderPackage method call : {}", joinPoint.getSignature());
+//    }
+
+    @Before("execution(* orderPackage(..))")
     public void beforeShipmentServiceMethods(JoinPoint joinPoint){
-        log.info("Before method call : {}", joinPoint.getSignature());
+        log.info("Before orderPackage in all call : {}", joinPoint.getSignature());
     }
 }
