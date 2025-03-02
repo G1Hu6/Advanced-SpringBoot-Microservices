@@ -25,7 +25,7 @@ class SpringbootAopApplicationTests {
 	@Test
 	void aopOrderPackage(){
 		log.info("Test orderPackage");
-		shipmentService.orderPackage(1L);
+		System.out.println(shipmentService.orderPackage(1L));
 	}
 
 	@Test
@@ -37,7 +37,7 @@ class SpringbootAopApplicationTests {
 	@Test
 	void aopOrderPackageInsidePaymentService(){
 		log.info("Test OrderPackageInsidePaymentService");
-		paymentService.orderPackage("weuw_wins-sadjlsn");
+		paymentService.orderPackage(4L);
 	}
 
 	@Test

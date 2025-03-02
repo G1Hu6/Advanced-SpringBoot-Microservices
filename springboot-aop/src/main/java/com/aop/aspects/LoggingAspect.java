@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
               business logic.It can happen at different times: compile-time,
               run-time, load-time.
 */
-@Aspect
+//@Aspect
 @Component
 @Slf4j
 public class LoggingAspect {

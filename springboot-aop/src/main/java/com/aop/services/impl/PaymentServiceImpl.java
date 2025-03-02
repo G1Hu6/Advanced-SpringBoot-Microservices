@@ -13,7 +13,7 @@ public class PaymentServiceImpl {
         log.info("Inside PaymentServiceImpl constructor");
     }
 
-    public PaymentServiceImpl(String id){
+    public PaymentServiceImpl(Long id){
         log.info("Inside PaymentServiceImpl parametrized constructor");
     }
 
@@ -25,7 +25,7 @@ public class PaymentServiceImpl {
     }
 
     @CustomAnnotation
-    public void orderPackage(String productId){
+    public void orderPackage(Long productId){
         //business logic
         log.info("Processing order package inside PaymentService");
         System.out.println("Processing order package inside PaymentService");
