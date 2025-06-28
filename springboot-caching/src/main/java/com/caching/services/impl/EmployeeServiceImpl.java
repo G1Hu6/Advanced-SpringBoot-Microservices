@@ -42,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @CachePut(cacheNames = CACHE_NAME, key = "#result.id")
+    @Transactional
     public EmployeeDto createNewEmployee(EmployeeDto employeeDto) {
         log.info("Creating new employee with email: {}", employeeDto.getEmail());
         List<Employee> existingEmployees = employeeRepository.findByEmail(employeeDto.getEmail());
