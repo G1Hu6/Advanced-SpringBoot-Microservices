@@ -33,7 +33,8 @@ public class SalaryAccountServiceImpl implements SalaryAccountService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    //@Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public SalaryAccount incrementBalance(Long accountId) {
 
         SalaryAccount salaryAccount = salaryAccountRepository.findById(accountId)
