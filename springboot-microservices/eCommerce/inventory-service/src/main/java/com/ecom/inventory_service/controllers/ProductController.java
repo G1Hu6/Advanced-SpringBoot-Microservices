@@ -5,8 +5,11 @@ import com.ecom.inventory_service.dtos.ProductDto;
 import com.ecom.inventory_service.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
@@ -17,6 +20,18 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final DiscoveryClient discoveryClient;
+    private final RestClient restClient;
+
+    // Call order-service from inventory-service using discovery server(eureka server)
+    @GetMapping("fetchOrders")
+    public String fetchFromOrderService(){
+        ServiceInstance orderServiceInstance =  discoveryClient.getInstances("order-service").getFirst();
+        return restClient.get()
+                .uri(orderServiceInstance.getUri() + "/api/v1/orders/helloOrder")
+                .retrieve()
+                .body(String.class);
+    }
 
     @GetMapping
     public ResponseEntity<List<ProductDto>> getAllInventory() {
